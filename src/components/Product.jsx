@@ -1,7 +1,19 @@
+import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
-const Product = ({product}) => {
+const Product = ({product, getProducts}) => {
+   const deleteProduct =async(id) => {
+       try{
+        await axios.delete(`http://localhost:3000/api/${id}`)
+        toast.success("Product have been deleted successfully");
+        getProducts();
+
+       }catch(err){
+           toast.error(err.message)
+       }
+   }
   return (
     <div className='bg-white rounded shadow-lg overflow-hidden'>
         <img src={product.image} alt="" className='w-full h-28 object-cover' />
@@ -15,7 +27,7 @@ const Product = ({product}) => {
           </div>
             <div className="mt-2 flex gap-4">
                 <Link to={`/edit/${product._id}`} className='inline-block w-full text-center shadow-md text-sm bg-gray-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-gray-600 hover:cursor-pointer'>Edit</Link>
-                <Link to={`/edit/`} className='inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-600 hover:cursor-pointer'>Delete</Link>
+                <button onClick={() => deleteProduct(product._id)}  className='inline-block w-full text-center shadow-md text-sm bg-red-700 text-white rounded-sm px-4 py-1 font-bold hover:bg-red-600 hover:cursor-pointer'>Delete</button>
             </div>
        </div>
     </div>

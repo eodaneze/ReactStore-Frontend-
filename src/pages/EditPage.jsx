@@ -53,6 +53,8 @@ const EditPage = () => {
     <h2 className='font-semibold text-2xl mb-4 block text-center'>
       Update a Product
     </h2>
+    {isLoading ? ("Loading") : (
+
     <form onSubmit={updateProduct}>
         <div className='space-y-2'>
             <div>
@@ -76,6 +78,7 @@ const EditPage = () => {
             </div>
         </div>
     </form>
+    )}
 </div>
   )
 }
