@@ -31,7 +31,7 @@ const getProducts = async() => {
        <div className="grid grid-cols-2  lg:grid-cols-4 gap-4 mt-5">
           {
             isLoading ? (
-                 "Loading"
+                 "Loading.."
             ) : (
               <>
                   {products.length > 0 ? (

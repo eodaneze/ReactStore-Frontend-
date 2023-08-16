@@ -4,6 +4,9 @@ import HomePage from './pages/HomePage'
 import CreatePage from './pages/CreatePage'
 import EditPage from './pages/EditPage'
 
+import { ToastContainer} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const App = () => {
   return (
     <div>
@@ -21,6 +24,7 @@ const App = () => {
               <Route path='/edit' element={<EditPage />} />   
           </Routes>
        </div>
+       <ToastContainer />
     </div>
   )
 }

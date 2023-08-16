@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-toastify'
 
 const CreatePage = () => {
   const[name, setName] = useState("")
@@ -16,16 +17,18 @@ const CreatePage = () => {
     // alert(name)
 
     if(name === "" || quantity === "" || price === "" || image === ""){
-       alert("Please fill out all the input completely");
+      toast.error("Please fill out all the input completely")
+      //  alert("Please fill out all the input completely");
     } 
     try{
         setIsLoading(true);
       const response = await axios.post("http://localhost:3000/api/products", {name: name, quantity: quantity, price: price, image: image});
-      alert(`Save ${response.data.name} Successfully`);
+      // alert(`Save ${response.data.name} Successfully`);
+      toast.success("New product have been added successfully");
       setIsLoading(false)
       navigate('/');
     }catch(err){
-      console.log(err);
+      toast.error(err.message)
       isLoading(false)
     }
   }
