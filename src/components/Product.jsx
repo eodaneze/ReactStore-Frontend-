@@ -2,17 +2,29 @@ import axios from 'axios'
 import React from 'react'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import Swal from 'sweetalert2'
 
 const Product = ({product, getProducts}) => {
    const deleteProduct =async(id) => {
-       try{
-        await axios.delete(`http://localhost:3000/api/${id}`)
-        toast.success("Product have been deleted successfully");
-        getProducts();
+    const result = await Swal.fire({
+      title: 'Are you sure you want to delete product?',
+      icon: 'warning',
+      confirmButtonColor: '#3085d6',
+       cancelButtonColor: '#d33',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!'
+    })
+    if(result.isConfirmed){
 
-       }catch(err){
-           toast.error(err.message)
-       }
+      try{
+       await axios.delete(`http://localhost:3000/api/${id}`)
+       toast.success("Product have been deleted successfully");
+       getProducts();
+
+      }catch(err){
+          toast.error(err.message)
+      }
+    }
    }
   return (
     <div className='bg-white rounded shadow-lg overflow-hidden'>
