@@ -21,7 +21,7 @@ const App = () => {
           <Routes>
               <Route index element={<HomePage />} />
               <Route path='/create' element={<CreatePage />} />
-              <Route path='/edit' element={<EditPage />} />   
+              <Route path='/edit/:id' element={<EditPage />} />   
           </Routes>
        </div>
        <ToastContainer />
