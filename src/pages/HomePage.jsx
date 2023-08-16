@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import Product from '../components/Product';
+import { Link } from 'react-router-dom';
 
 const HomePage = () => {
     const[products, setProducts] = useState([]);
@@ -22,7 +23,12 @@ const getProducts = async() => {
     }, [])
   return (
     <div>
-       <div className=" mx-5 grid grid-cols-2 lg:grid-cols-4 gap-4 mt-5">
+        <div>
+            <Link to={'/create'} className='inlin-block mt-4 shadow-md bg-blue-700 text-white text-sm rounded-sm px-4 py-2 font-bold hover:bg-blue-600 hover:cursor-pointer'>
+                  Create a post
+            </Link>
+        </div>
+       <div className="grid grid-cols-2  lg:grid-cols-4 gap-4 mt-5">
           {
             isLoading ? (
                  "Loading"

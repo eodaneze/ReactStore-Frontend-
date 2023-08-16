@@ -14,11 +14,13 @@ const App = () => {
               </Link>
           </div>
       </nav>
-       <Routes>
-          <Route index element={<HomePage />} />
-          <Route path='/create' element={<CreatePage />} />
-          <Route path='/edit' element={<EditPage />} />   
-      </Routes>
+       <div className="container mx-auto p-2 h-full">
+          <Routes>
+              <Route index element={<HomePage />} />
+              <Route path='/create' element={<CreatePage />} />
+              <Route path='/edit' element={<EditPage />} />   
+          </Routes>
+       </div>
     </div>
   )
 }
